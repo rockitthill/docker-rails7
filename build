@@ -4,7 +4,7 @@
 
 BUILDER=$( basename "$PWD" )
 PLATFORMS="linux/arm64,linux/amd64"
-TAG="rockitthill/rails6"
+TAG="rockitthill/rails7"
 BULLET=$( printf "\e[38;2;43;88;103;48;2;34;38;40m▄\e[38;2;30;138;180;48;2;32;137;178m▄\e[38;2;33;35;37;48;2;32;64;78m▄\e[m" )
 
 # Assign a tag version if an argument is passed in
@@ -25,10 +25,10 @@ echo ""
 echo "$BULLET Building for $TAG started."
 echo ""
 echo "$BULLET Creating buildx builder \"$BUILDER\"..."
-# docker buildx create --use --name $BUILDER --platform $PLATFORMS
+docker buildx create --use --name $BUILDER --platform $PLATFORMS
 echo ""
 echo "$BULLET Building multi-platform images..."
-# docker buildx build --push . --platform $PLATFORMS --tag $TAG
+docker buildx build --push . --platform $PLATFORMS --tag $TAG
 echo ""
 echo "$BULLET Done! Removing builder..."
-# docker buildx rm $BUILDER
+docker buildx rm $BUILDER
